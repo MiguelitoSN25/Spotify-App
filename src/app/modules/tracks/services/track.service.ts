@@ -1,6 +1,6 @@
 
 import { TrackModel } from '@core/models/tracks.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map, mergeMap, tap, catchError } from 'rxjs/operators';
@@ -33,7 +33,8 @@ export class TrackService {
    * @returns 
    */
   getAllTracks$(): Observable<any> {
-    return this.http.get(`${this.URL}/tracks`)
+    return this.http.get(`${this.URL}/tracks`, {
+  })
       .pipe(
         map(({ data }: any) => {
           return data
